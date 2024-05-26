@@ -27,17 +27,31 @@ class multimodelchat:
         self.model = model
         self.initprompt = "Provide a summary of the video, including its key points and corresponding timestamps in Chinese"
         part = self.setup_video( vidfn)
-        self.chatctx = setup_chatctx( part)
+        self.chatctx = self.setup_chatctx( part)
 
     def setup_chatctx(self,part):
-      chatctx = self.model.start_chat(response_validation=False) 
-      res = chatctx.send_message(
+        chatctx = self.model.start_chat(response_validation=False) 
+        res = chatctx.send_message(
           [part, self.initprompt],
           generation_config=generation_config,
           safety_settings=safety_settings
-      )
-      self.responses.append( res)
-      return chatctx
+        )
+        """
+        {
+          "text": "Hello, how can I help you today?",
+          "tokens": ["Hello", ",", "how", "can", "I", "help", "you", "today", "?"],
+          "logprobs": [-1.234, -0.567, -0.890, -0.456, -0.345, -0.234, -0.123, -0.012, -0.001],
+          "chat_id": "1234567890",
+          "conversation_id": "9876543210",
+          "message_id": "1011121314",
+          "model_version": "gemini-1.5-flash-001",
+          "timestamp": "2023-10-26T18:30:00Z",
+          "error": null,
+          "warning": null
+        }
+        """
+        self.responses.append( res.text)
+        return chatctx
 
     def setup_video( self, vidfn):
         with open( vidfn, "rb") as f:
@@ -56,7 +70,6 @@ class multimodelchat:
             if user_input.lower() == 'exit':
                 print("Chat ended.")
                 break
-            self.chatctx.send_message
             res = self.chatctx.send_message(
               [user_input],
               generation_config=generation_config,
