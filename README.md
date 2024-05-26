@@ -9,34 +9,23 @@ This is a Python script that allows you to download videos from X aka Twitter us
 
 ## Prerequisites
 
-- Python 3.x
-- requests library (install requirements using `pip install requests`)
-- bs4 library (install using `pip install beautifulsoup4`)
-- tqdm library (install using `pip install tqdm`)
+```
+pip install -r requirement.txt
+gcloud auth application-default login
+```
 
 ## Usage
 
-1. Clone the repository:
+* Run the script with the video URL as the argument
 
-   ```bash
-   git clone https://github.com/z1nc0r3/twitter-video-downloader
+```sh
+python xvtalk.py <a tweet's URL>
+```
 
-2. Navigate to the project directory:
-
-   ```bash
-   cd twitter-video-downloader
-
-3. Install the required packages
-
-   ```bash
-   pip install -r requirements.txt
-
-4. Run the script with the video URL as the argument
-
-   ```bash
-   python twitter_downloader.py {video url}
-
-   eg :- python twitter_downloader.py https://x.com/realmadriden/status/1743790569866821949?s=20
+example
+```sh
+python xvtalk.py https://x.com/realmadriden/status/1743790569866821949?s=20
+```
 
 ## Note
 
