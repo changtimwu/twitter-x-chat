@@ -22,7 +22,7 @@ def download_video(url, file_name) -> None:
     block_size = 1024
     progress_bar = tqdm(total=total_size, unit="B", unit_scale=True)
 
-    download_path = os.path.join(Path.home(), "Downloads", file_name)
+    download_path = file_name #os.path.join(Path.home(), "Downloads", file_name)
 
     with open(download_path, "wb") as file:
         for data in response.iter_content(block_size):
@@ -50,7 +50,8 @@ def download_twitter_video(url):
     
     file_name = data.find_all("div", class_="leading-tight")[0].find_all("p", class_="m-2")[0].text # Video file name
     file_name = re.sub(r"[^a-zA-Z0-9]+", ' ', file_name).strip() + ".mp4" # Remove special characters from file name
-    
+    file_name = file_name.replace(' ', '_')
+    print('file_name=', file_name)
     download_video(highest_quality_url, file_name)
 
 
