@@ -50,7 +50,7 @@ class multimodelchat:
           "warning": null
         }
         """
-        self.responses.append( res.text)
+        self.responses.append( res)
         return chatctx
 
     def setup_video( self, vidfn):
@@ -65,7 +65,7 @@ class multimodelchat:
     def interactive_chat(self):
         while True:
             res = self.responses.pop(0)
-            print(res)
+            print(res.text)
             user_input = input("You: ")
             if user_input.lower() == 'exit':
                 print("Chat ended.")

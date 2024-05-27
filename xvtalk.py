@@ -57,21 +57,12 @@ def download_twitter_video(url):
     download_video(highest_quality_url, tfn)
     return tfn
 
-def chat_program( chatctx):
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'exit':
-            print("Chat ended.")
-            break
-        ctx
-        print(f"Chatbot: You said '{user_input}'")
-
-
 if len(sys.argv) < 2:
     print(f"Usage: {sys.argv[0]} <a tweet's URL>")
     sys.exit(0)
 
 url = sys.argv[1]
-vfn = download_twitter_video(url)
-ctx = multimodelchat(vfn)
-chat_program(ctx)
+vidfn = download_twitter_video(url)
+ctx = multimodelchat(vidfn)
+ctx.interactive_chat()
+ 
