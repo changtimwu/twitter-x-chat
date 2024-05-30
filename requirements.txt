@@ -1,4 +1,5 @@
 requests
 tqdm
 bs4
+yt-dlp
 google-cloud-aiplatform
