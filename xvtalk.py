@@ -7,7 +7,7 @@ import bs4
 
 from tqdm import tqdm
 from pathlib import Path
-from chat_video import multimodelchat
+from chat_video import multimodalchat
  
 
 def download_video(url, file_name) -> None:
@@ -63,6 +63,6 @@ if len(sys.argv) < 2:
 
 url = sys.argv[1]
 vidfn = download_twitter_video(url)
-ctx = multimodelchat(vidfn)
-ctx.interactive_chat()
+ctx = multimodalchat(vidfn)
+ctx.interactive()
  
