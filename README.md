@@ -10,7 +10,7 @@ This is a Python script that allows you to download videos from X aka Twitter us
 ## Prerequisites
 
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 gcloud auth application-default login
 ```
 
